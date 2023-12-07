@@ -48,8 +48,10 @@ class App extends Component {
 
     return (
       <div>
-        <div class = "mt-2">
-            <img class = "img-fluid" src = {logo} width ="200" height = "50"/>
+        <div class = "container">
+          <div class = "col-12">
+            <img style= {{width: '20%', height: 'auto'}} src = {logo}/>
+          </div>
         </div>
         <h2 style={{textAlign:'left'}}>Popular Anime</h2>
         <div style={{ display: 'flex' }}>
