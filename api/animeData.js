@@ -5,6 +5,7 @@ const animeData = [
       genre: 'Action, Drama, Fantasy',
       releaseDate: '2013-04-06',
       synopsis: 'In a world where humanity resides within...',
+      image: './images/A1',
       likes: 0,
       dislikes: 0
     },
@@ -14,6 +15,7 @@ const animeData = [
       genre: 'Action, Comedy, Super Power',
       releaseDate: '2016-04-03',
       synopsis: 'In a world where people with superpowers (known as "quirks")...',
+      image: './images/A2',
       likes: 0,
       dislikes: 0
     },
