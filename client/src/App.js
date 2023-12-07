@@ -1,4 +1,4 @@
-import React, { Component, Flatlist } from "react";
+import React, { Component } from "react";
 import AnimeList from './AnimeList';
 import AnimeDetails from './AnimeDetails';
 import logo from './AniMate.png';
@@ -48,7 +48,9 @@ class App extends Component {
 
     return (
       <div>
-        <h2>AniMate</h2>
+        <div class = "mt-2">
+            <img class = "img-fluid" src = {logo} width ="200" height = "50"/>
+        </div>
         <h2 style={{textAlign:'left'}}>Popular Anime</h2>
         <div style={{ display: 'flex' }}>
           {animeData.map(anime => (
