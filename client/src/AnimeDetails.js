@@ -1,7 +1,7 @@
 // AnimeDetails.js
 import React, { useState, useEffect } from 'react';
 
-const AnimeDetails = ({animeId}) => {
+const AnimeDetails = ({animeId, onGoBack}) => {
   const [animeDetails, setAnimeDetails] = useState(null);
 
   useEffect(() => {
@@ -19,11 +19,12 @@ const AnimeDetails = ({animeId}) => {
   return (
     <div>
       <h2>Anime Details</h2>
-      <img src={animeDetails.photo} alt={animeDetails.title} style={{ width: '200px', height: '300px' }} />
+      <img src={process.env.PUBLIC_URL + '/photos/' + animeDetails.photo} alt={animeDetails.title} style={{ width: '200px', height: '300px' }} />
       <h3>{animeDetails.title}</h3>
       <p>{animeDetails.synopsis}</p>
       <p>Genres: {animeDetails.genre}</p>
       <p>Release Date: {animeDetails.releaseDate}</p>
+      <button onClick={onGoBack}>Go Back to Home</button>
     </div>
   );
 };

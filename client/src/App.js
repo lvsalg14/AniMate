@@ -29,9 +29,9 @@ class App extends Component {
   };
 
   // Function to navigate to the Anime List page
-  goToAnimeList = () => {
-    this.setState({ currentPage: 'animeList', animeId: null });
-  }
+  // goToAnimeList = () => {
+  //   this.setState({ currentPage: 'animeList', animeId: null });
+  // }
 
   // Function to navigate to the Anime Details page
   goToAnimeDetails = (animeId) => {
@@ -48,12 +48,14 @@ class App extends Component {
 
     return (
       <div>
-        <h2>Anime List</h2>
+        <h2>AniMate</h2>
+        <h2 style={{textAlign:'left'}}>Popular Anime</h2>
         <div style={{ display: 'flex' }}>
           {animeData.map(anime => (
             <div key={anime.id} style={{ margin: '10px', textAlign: 'center' }}>
               <img
-                src={anime.photo}
+                // src={anime.photo}
+                src={process.env.PUBLIC_URL + '/photos/' + anime.photo}
                 alt={anime.title}
                 style={{ width: '150px', height: '200px', objectFit: 'cover' }}
                 onClick={() => this.goToAnimeDetails(anime.id)}
@@ -73,7 +75,7 @@ class App extends Component {
       case 'animeList':
         return <AnimeList onAnimeClick={this.goToAnimeDetails} />;
       case 'animeDetails':
-        return <AnimeDetails animeId={animeId} />;
+        return <AnimeDetails animeId={animeId} onGoBack={() => this.setState({ currentPage: 'home' })}/>;
       default:
         return this.renderAnimeList();
     }
@@ -83,7 +85,6 @@ class App extends Component {
     return (
       <div className="App">
         {this.renderPage()}
-        <button onClick={this.goToAnimeList}>Go to Anime List</button>
       </div>
     );
   }
