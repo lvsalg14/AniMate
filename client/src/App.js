@@ -20,11 +20,7 @@ class App extends Component {
     this.callAPI();
   }
   
-  item = (
-    <div class="col-md-6 col-lg-4 mb-5 mb-md-0">
-      
-    </div>  
-  );
+  
 render(){
   return (
     
@@ -38,7 +34,9 @@ render(){
       </nav>
       <section class = "page-section" id="animeList">
         <div>
-
+          <FlatList>
+            
+          </FlatList>
         </div>
       </section>
       
