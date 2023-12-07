@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, FlatList } from "react";
 import logo from './logo.svg';
 import './App.css';
 
@@ -7,7 +7,7 @@ class App extends Component {
     super(props);
     this.state = { apiResponse: "" };
   }
-
+  
   callAPI(){
     fetch("http://localhost:9000/testAPI")
       .then(res => res.text())
@@ -17,6 +17,7 @@ class App extends Component {
   componentDidMount(){
     this.callAPI();
   }
+  
 render(){
   return (
     <div className="App">
@@ -24,6 +25,7 @@ render(){
         <img src={logo} className="App-logo" alt="logo" />
         <h1 className = "App-title"> Welcome to React</h1>
       </header>
+      
       <p className="App-intro">{this.state.apiResponse}</p>
     </div>
   );
