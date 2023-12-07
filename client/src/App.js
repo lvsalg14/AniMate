@@ -1,7 +1,10 @@
-import React, { Component } from "react";
+import React, { Component, Flatlist } from "react";
 import AnimeList from './AnimeList';
 import AnimeDetails from './AnimeDetails';
+import logo from './AniMate.png';
 import './App.css';
+
+
 
 class App extends Component {
   constructor(props) {
