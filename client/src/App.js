@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import AnimeList from './AnimeList';
-import AnimeDetails from './AnimeDetails';
 import logo from './AniMate.png';
 import './App.css';
 import Home from "./components/Home"
 import Login from "./components/Login"
 import Signup from "./components/Signup"
+import AnimeInfo from "./components/AnimeInfo"
 
 import { useState } from 'react';
 
@@ -17,9 +16,10 @@ function App(){
     <div className = "App">
       <Router>
         <Routes>
-          <Route path="/" element={<Login/>}/>
-          <Route path="/signup" element={<Signup/>}/>
-          <Route path="/home" element={<Home/>}/>
+          {/* <Route path="/" element={<Login/>}/>
+          <Route path="/signup" element={<Signup/>}/> */}
+          <Route path="/" element={<Home/>}/>
+          <Route path="/anime/:mal_id" element={<AnimeInfo/>}/>
         </Routes>
       </Router>
     </div>
