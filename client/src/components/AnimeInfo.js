@@ -38,21 +38,17 @@ export const AnimeInfo = () => {
 
     const addToFavorites = async () => {
       try {
-        // Get existing favorites
-        const existingUserResponse = await axios.get(`http://localhost:8000/favorites`,{user});
+        const existingUserResponse = await axios.get(`http://localhost:8000/favorites?username=${user}`);
         const existingFavorites = existingUserResponse.data;
     
-        // Check if the anime is already in favorites
         if (existingFavorites.includes(mal_id)) {
           alert('Anime is already in favorites!');
           return;
         }
     
-        // Update local favorites array
         const newFavorites = [...existingFavorites, mal_id];
     
-        // Update favorites on the server
-        await axios.patch(`http://localhost:8000/userdatas/${user}`, {
+        await axios.patch(`http://localhost:8000/favorites?username=${user}`, {
           favorites: newFavorites,
         });
     

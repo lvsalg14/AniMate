@@ -7,22 +7,23 @@ app.use(express.urlencoded({extended:true}))
 app.use(cors())
 
 
-app.get("/favorites",cors(),async(req,res)=>{
-    const username = req.body;
-
-    try {
-        const check = await collection.findOne({ username: username });
+app.get("/favorites", cors(), async (req, res) => {
+    const { username } = req.query;
+    console.log("Received request for favorites. Username:", username);
     
-        if (check) {
-          res.json(check.favorites || []); // Return user's favorites array, or an empty array if it doesn't exist
-        } else {
-          res.status(404).json({ error: "User not found" });
-        }
-      } catch (error) {
-        console.error("Error retrieving favorites:", error);
-        res.status(500).json({ error: "Internal server error", username });
+    try {
+      const check = await collection.findOne({ username: username });
+  
+      if (check) {
+        res.json(check.favorites || []); 
+      } else {
+        res.status(404).json({ error: "User not found" });
       }
-    });
+    } catch (error) {
+      console.error("Error retrieving favorites:", error);
+      res.status(500).json({ error: "Internal server error", username });
+    }
+  });
 
 app.post("/", async(req,res)=>
 {
