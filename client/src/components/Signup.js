@@ -17,7 +17,7 @@ function Login() {
                 if(res.data== "exist"){
                     alert("User already exists")
                 }else if(res.data== "not exist"){
-                    history("/home",{state:{id:username}})                }
+                    history("/home",{state:{user:username}})                }
             })
             .catch(e=>{
                 alert("Wrong credentials")

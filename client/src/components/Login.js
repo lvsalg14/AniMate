@@ -14,7 +14,7 @@ function Login() {
             await axios.post("http://localhost:8000/",{username,password})
             .then(res=>{
                 if(res.data== "exist"){
-                    history("/home",{state:{id:username}})
+                    history("/home",{state:{user:username}})
 
                 }else if(res.data== "not exist"){
                     alert("User is not found")

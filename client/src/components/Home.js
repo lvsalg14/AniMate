@@ -3,10 +3,14 @@ import {useLocation, useNavigate} from 'react-router-dom';
 import {AnimeList} from './AnimeList';
 import './style.css'
 import logo from '../assets/AniMate.png';
-
+import favorites from './Favorites';
 
 function Home(){
+    
     const location = useLocation()
+    const history = useNavigate()
+    const {user} = location.state
+    console.log("User in AnimeInfo:", user); 
 
     const [search, setSearch]=useState("");
     const [searchData, setSearchData]=useState();
@@ -38,6 +42,7 @@ function Home(){
     const home=()=>{
         navigate(0);
     }
+    
 
     return(
         <>
@@ -52,6 +57,7 @@ function Home(){
                 />
                 <div className="container-contentbar">
                         <button className="home-button" onClick={home}>Home</button>
+                        <button className="fav-button" onClick={favorites}>Favorites</button>
                         <div className="search-box">
                             <input type="search" placeholder="Search for an anime..." onChange={(e)=>setSearch(e.target.value)}/>
                         </div>
@@ -63,7 +69,7 @@ function Home(){
         <div className="scroll-container">
             <div className="anime-row">
                 <div className="row">
-                    <AnimeList animeList={searchData} />
+                    <AnimeList animeList={searchData} user = {user} navigate = {navigate}/>
                 </div>
             </div>
         </div>
@@ -71,7 +77,7 @@ function Home(){
         <div className="scroll-container">
             <div className="anime-row">
                 <div className="row">
-                    <AnimeList animeList={popularData} />
+                    <AnimeList animeList={popularData} user = {user} navigate = {navigate}/>
                 </div>
             </div>
         </div>
