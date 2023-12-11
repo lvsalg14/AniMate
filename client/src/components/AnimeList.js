@@ -13,7 +13,7 @@ export const AnimeList = ({animeList}) => {
             <Link to={`/anime/${anime.mal_id}`} key={anime.mal_id}>
             <div className="card">
               <img src={anime.images.jpg.large_image_url} alt="animeImage"/>
-              <div className="animeInfo">
+              <div className="card-title">
                 <h4>{anime.title}</h4>
               </div>
             </div>
