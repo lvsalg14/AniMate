@@ -5,6 +5,7 @@ import axios from 'axios';
 
 export const AnimeInfo = () => {
   
+  const[myAnimeList, setMyAnimeList] = useState([]);
   const { search } = useLocation();
   const searchParams = new URLSearchParams(search);
   const user = searchParams.get("user");
@@ -16,7 +17,6 @@ export const AnimeInfo = () => {
   const { mal_id } = useParams();
   const [animeInfo, setAnimeInfo] = useState();
   const navigate = useNavigate();
-  
 
   const getData=async()=>{
     try{
@@ -34,6 +34,11 @@ export const AnimeInfo = () => {
 
     const goBack=()=>{
         navigate(-1);
+    }
+
+    const addTo=(animeInfo)=>{
+      const newArray=[...myAnimeList,animeInfo];
+      setMyAnimeList(newArray);
     }
 
     const addToFavorites = async () => {
@@ -104,7 +109,7 @@ export const AnimeInfo = () => {
             <p>No score available for this anime.</p>
           )}
         </div>
-          <button className="fav" onClick= {addToFavorites}>Favorite</button>
+          {/* <button className="fav" onClick= {addToFavorites}>Favorite</button> */}
           <button className="backtohome-button" onClick={goBack}>Back to Home Page</button>
         </>
       ) : (

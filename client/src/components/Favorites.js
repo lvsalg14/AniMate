@@ -5,12 +5,9 @@ import './style.css'
 import logo from '../assets/AniMate.png';
 
 
-function Favorites (){
-
-
-
+function favorites (){
 
 
 }
 
-export default Favorites;
+export default favorites;

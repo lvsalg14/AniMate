@@ -15,7 +15,19 @@ function Home(){
     const [search, setSearch]=useState("");
     const [searchData, setSearchData]=useState();
     const [popularData, setPopular]=useState();
+    const [myAnimeList, setMyAnimeList]=useState([]);
     const navigate = useNavigate();
+
+    const addTo=(anime)=>{
+        const newArray=[...myAnimeList,anime];
+        setMyAnimeList(newArray);
+    }
+    const removeFrom=(anime)=>{
+        const newArray=myAnimeList.filter((myanime)=>{
+            return myanime.mal_id !== anime.mal_id
+        })
+        setMyAnimeList(newArray);
+    }
 
     const getPopularData=async()=>{
         const popularResponse=await fetch('https://api.jikan.moe/v4/top/anime');
@@ -43,7 +55,6 @@ function Home(){
         navigate(0);
     }
     
-
     return(
         <>
         <div className = "template">
@@ -57,7 +68,7 @@ function Home(){
                 />
                 <div className="container-contentbar">
                         <button className="home-button" onClick={home}>Home</button>
-                        <button className="fav-button" onClick={favorites}>Favorites</button>
+                        {/* <button className="fav-button" onClick={favorites}>Favorites</button> */}
                         <div className="search-box">
                             <input type="search" placeholder="Search for an anime..." onChange={(e)=>setSearch(e.target.value)}/>
                         </div>
@@ -69,7 +80,7 @@ function Home(){
         <div className="scroll-container">
             <div className="anime-row">
                 <div className="row">
-                    <AnimeList animeList={searchData} user = {user} navigate = {navigate}/>
+                    <AnimeList handleList={(anime)=>addTo(anime)} animeList={searchData} user = {user} navigate = {navigate}/>
                 </div>
             </div>
         </div>
@@ -77,7 +88,15 @@ function Home(){
         <div className="scroll-container">
             <div className="anime-row">
                 <div className="row">
-                    <AnimeList animeList={popularData} user = {user} navigate = {navigate}/>
+                    <AnimeList handleList={(anime)=>addTo(anime)} animeList={popularData} user = {user} navigate = {navigate}/>
+                </div>
+            </div>
+        </div>
+        <h2 className="fixed-heading">My List</h2>
+        <div className="scroll-container">
+            <div className="anime-row">
+                <div className="row">
+                    <AnimeList handleList={(anime)=>removeFrom(anime)} animeList={myAnimeList} user = {user} navigate = {navigate}/>
                 </div>
             </div>
         </div>
