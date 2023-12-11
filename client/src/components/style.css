@@ -20,7 +20,7 @@ body {
     margin-top: 50px;
     border: solid;
     border-color:#BCB1FF;
-    background-color:#ababab;
+    background-color:beige;
     overflow: hidden;
 }
 .container{
@@ -51,6 +51,7 @@ body {
     
 }
 .fixed-heading{
+    text-decoration: underline;
     position: static;
     text-align: left;
     margin-left: 51px;
@@ -118,7 +119,7 @@ body {
 }
 .backtohome-button{
     width: 120px;
-    height: 30px;
+    height: 40px;
     font-size: 15px;
     border-color:rgb(117, 117, 231);
     background-color: #D3D3D3;

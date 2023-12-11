@@ -24,6 +24,7 @@ function Home(){
         const searchData=await searchResponse.json();
         setSearchData(searchData.data);
     }
+    
     useEffect(()=>{
         const delay = 334; // 0.334 seconds delay between requests
         const timer = setTimeout(()=> {
