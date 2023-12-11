@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import logo from '../assets/AniMate.png';
 
 export const AnimeInfo = () => {
   const { mal_id } = useParams();
@@ -20,35 +21,54 @@ export const AnimeInfo = () => {
         navigate(-1);
     }
   return (
-    <div className="anime-info-container">
+      <>
+      <div className="template">
+      <div className = "homepage">
+          <div className = "header">
+              <img
+                  src={logo}
+                  alt="AniMate Image"
+                  className="header-image"
+                  onClick={goBack}
+                  style={{cursor: 'pointer'}}
+              />
+              <div className="container-contentbar">
+                      <button className="home-button" onClick={goBack}>Home</button>
+              </div>
+          </div>
+      </div>
+    <div>
       {animeInfo ? (
         <>
-          <h2>{animeInfo.title}</h2>
-          <img src={animeInfo.images.jpg.large_image_url} alt={animeInfo.title} />
+          <h2 style={{marginTop:'20px'}}>{animeInfo.title}</h2>
+          <img style={{marginTop:'10px', marginBottom:'10px'}} src={animeInfo.images.jpg.large_image_url} alt={animeInfo.title} />
+          <div className="anime-info-container"> 
           {animeInfo.synopsis ? (
-            <p>{animeInfo.synopsis}</p>
+            <p style={{ marginLeft:'5px', marginTop:'5px' ,textAlign: 'left' }}> <strong>Synopsis:</strong> {animeInfo.synopsis}</p>
           ) : (
             <p>No synopsis available for this anime.</p>
             )}
-          <p>Genres:</p>
-          <ul>
+          <ol style={{listStyle: 'none', display:'flex',marginTop:'5px'}}>
+            <p style={{ marginLeft: '5px' }}><strong>Genres:</strong></p>
             {animeInfo.genres.map((genre, index) => (
-            <li key={index}>{genre.name}</li>
+            <li key={index} style={{ marginLeft:'5px'}}>{genre.name}</li>
             ))}
-        </ul>
-          <p>Episodes: {animeInfo.episodes}</p>
-          {animeInfo.score ? (
-            <p>Score: {animeInfo.score}</p>
+          </ol>
+          <p style={{ display: 'flex',marginLeft: '5px'}}> <strong>Episodes:</strong> <span style={{ marginLeft: '2px' }}>{animeInfo.episodes}</span></p>
+          {animeInfo.score ?(
+            <p style={{ display: 'flex',marginLeft: '5px',marginBottom:'5px'}}><strong>Score:</strong> <span style={{ marginLeft: '2px' }}>{animeInfo.score}</span></p>
           ) : (
             <p>No score available for this anime.</p>
-            )}
-          <button onClick={goBack}>Back to Home Page</button>
-          {/* Add more details as needed */}
+          )}
+        </div>
+          <button className="backtohome-button" onClick={goBack}>Back to Home Page</button>
         </>
       ) : (
         <p>Loading anime information...</p>
       )}
     </div>
+  </div>
+  </>
   );
 };
 
