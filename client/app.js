@@ -25,7 +25,7 @@ app.post("/", async(req,res)=>
         }
     }
     catch(e){
-        res.json("not exist")
+        res.json("fail")
 
     }
 })
@@ -52,7 +52,7 @@ app.post("/signup", async(req,res)=>
         }
     }
     catch(e){
-        res.json("not exist")
+        res.json("fail")
 
     }
 })

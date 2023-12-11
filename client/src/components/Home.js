@@ -4,7 +4,7 @@ import {AnimeList} from './AnimeList';
 import './style.css'
 
 function Home(){
-    // const location = useLocation()
+    const location = useLocation()
 
     const [search, setSearch]=useState("");
     const [searchData, setSearchData]=useState();
@@ -32,7 +32,6 @@ function Home(){
     return(
         <>
         <div className = "homepage">
-            {/* <h1>Hello {location.state.id} and welcome to the homepage</h1> */}
             <div className = "header">
                 <h1>MyAnimeList</h1>
                 <div className="search-box">

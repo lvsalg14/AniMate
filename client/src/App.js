@@ -16,9 +16,9 @@ function App(){
     <div className = "App">
       <Router>
         <Routes>
-          {/* <Route path="/" element={<Login/>}/>
-          <Route path="/signup" element={<Signup/>}/> */}
-          <Route path="/" element={<Home/>}/>
+          <Route path="/" element={<Login/>}/>
+          <Route path="/signup" element={<Signup/>}/>
+          <Route path="/home" element={<Home/>}/>
           <Route path="/anime/:mal_id" element={<AnimeInfo/>}/>
         </Routes>
       </Router>

@@ -16,8 +16,6 @@ function Login() {
             .then(res=>{
                 if(res.data== "exist"){
                     alert("User already exists")
-                    //history("/home",{state:{id:username}})
-
                 }else if(res.data== "not exist"){
                     history("/home",{state:{id:username}})                }
             })
